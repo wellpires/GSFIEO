@@ -48,7 +48,7 @@ public class BusPermissao {
 
 		String strQuery;
 
-		strQuery = "SELECT P.permissao  FROM Permissao P WHERE P.status = 1";
+		strQuery = "SELECT P.permissao  FROM Permissao P WHERE P.status = '1'";
 
 		return bd.retorna_N_Registros(strQuery);
 

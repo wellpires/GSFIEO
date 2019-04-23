@@ -32,7 +32,7 @@ public class BusServico {
 		String strQuery;
 
 		strQuery = "UPDATE servico SET serv_desc = '" + servico.getServico() + "'," + "status = '" + servico.getStatus()
-				+ "'," + "id_tipo_serv = (SELECT TP.id_tipo_serv" + " FROM tipo_servico TP WHERE TP.tipo_serv_desc = '"
+				+ "'," + "id_tipo_serv_FK = (SELECT TP.id_tipo_serv" + " FROM tipo_servico TP WHERE TP.tipo_serv_desc = '"
 				+ servico.getTipoServico().getTipoServico() + "')" + " WHERE id_serv = '" + servico.getCdServicos()
 				+ "'";
 

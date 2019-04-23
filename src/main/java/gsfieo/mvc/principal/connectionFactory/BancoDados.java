@@ -229,19 +229,12 @@ public class BancoDados {
 	}
 
 	private void fecharConexaoBanco() {
-
 		try {
-
 			if (con.isClosed() == false) {
-
 				con.close();
-
 			}
-
 		} catch (SQLException e) {
-
 			System.out.println("Erro ao fechar a conexão com o Banco de Dados:\n " + e.toString());
-
 		}
 
 	}
