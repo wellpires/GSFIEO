@@ -14,10 +14,8 @@ public class BusEstoque {
 
 	public void daBaixaEstoque(Estoque estoque) {
 
-		String strQuery;
-
-		strQuery = "EXEC SP_DA_BAIXA_ESTOQUE @qtd = '" + estoque.getQtd() + "', @servico_desc = '"
-				+ estoque.getServico().getServico() + "',@produto_desc = '" + estoque.getProduto().getProduto() + "'";
+		String strQuery = String.format("CALL SP_DA_BAIXA_ESTOQUE(%d, '%s', '%s')", estoque.getQtd(),
+				estoque.getServico().getServico(), estoque.getProduto().getProduto());
 
 		bd.executaComando(strQuery);
 

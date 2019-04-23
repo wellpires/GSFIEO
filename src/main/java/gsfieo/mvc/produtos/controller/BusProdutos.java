@@ -228,8 +228,8 @@ public class BusProdutos {
 
 		strQuery = "SELECT (SELECT PR.produto_desc FROM produto PR WHERE PR.id_produto = P.id_produto_FK) ,"
 				+ "(SELECT PR.valor_unitario FROM produto PR WHERE PR.id_produto = P.id_produto_FK) ,"
-				+ "P.qtd  FROM pedidos P WHERE P.id_comanda_FK = '" + pedidos.getComanda().getCdComanda() + "'"
-				+ " AND P.id_comanda_FK IN (SELECT C.id_comanda FROM comanda C WHERE C.id_status_FK = 2)";
+				+ "P.qtd, P.subTotal FROM pedidos P WHERE P.id_comanda_FK = '" + pedidos.getComanda().getCdComanda()
+				+ "'" + " AND P.id_comanda_FK IN (SELECT C.id_comanda FROM comanda C WHERE C.id_status_FK = 2)";
 
 		return bd.retorna_N_Registros(strQuery);
 
