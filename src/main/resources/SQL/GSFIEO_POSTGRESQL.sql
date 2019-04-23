@@ -143,9 +143,8 @@ INSERT INTO status VALUES (2,'PRE_APROVADO');
 
 --  STORAGE PROCEDURE
 --> DÁ BAIXA NO ESTOQUE E NA TABELA PRODUTOS
-CREATE PROCEDURE SP_DA_BAIXA_ESTOQUE @qtd INT,@servico_desc VARCHAR (50),@produto_desc VARCHAR (50) AS BEGIN
-
-	UPDATE ESTOQUEXPRODUTO SET qtdEstoque = qtdEstoque - @qtd WHERE id_estoque_FK = (SELECT E.id_estoque FROM estoque E WHERE E.id_serv_FK = (SELECT S.id_serv FROM servico S WHERE S.serv_desc = @servico_desc)) AND id_produto_FK = (SELECT P.id_produto FROM PRODUTO P WHERE P.produto_desc = @produto_desc)
-
-END
-GO
+CREATE PROCEDURE SP_DA_BAIXA_ESTOQUE(qtd integer, servico_desc varchar, produto_desc varchar)
+LANGUAGE SQL
+AS $$
+	UPDATE ESTOQUEXPRODUTO SET qtdEstoque = qtdEstoque - qtd WHERE id_estoque_FK = (SELECT E.id_estoque FROM estoque E WHERE E.id_serv_FK = (SELECT S.id_serv FROM servico S WHERE S.serv_desc = servico_desc)) AND id_produto_FK = (SELECT P.id_produto FROM PRODUTO P WHERE P.produto_desc = produto_desc)
+$$;
