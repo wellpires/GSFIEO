@@ -211,6 +211,7 @@ public class LytProduto extends CadastroConsulta implements ActionListener, Chan
 					Produto produto = new Produto();
 
 					produto.setCdProduto((int) pModel.getValueAt(dgvDados.getSelectedRow(), 0));
+					busEstoque.excluirVinculacaoProdutoEstoque(produto);
 					busProdutos.excluir(produto);
 
 					GSFIEOUtil.mensagem(LytProduto.this, "Registro excluído com sucesso!",

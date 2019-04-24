@@ -7,6 +7,7 @@ package gsfieo.mvc.estoque.controller;
 
 import gsfieo.mvc.estoque.model.Estoque;
 import gsfieo.mvc.principal.connectionFactory.BancoDados;
+import gsfieo.mvc.produtos.model.Produto;
 
 public class BusEstoque {
 
@@ -80,6 +81,14 @@ public class BusEstoque {
 				+ estoque.getProduto().getProduto() + "' AND id_produto = EP.id_produto_FK)";
 
 		return bd.retornaRegistro(strQuery);
+
+	}
+
+	public void excluirVinculacaoProdutoEstoque(Produto produto) {
+
+		String strQuery = "DELETE FROM estoqueXproduto WHERE id_produto_fk = %d";
+
+		bd.executaComando(String.format(strQuery, produto.getCdProduto()));
 
 	}
 

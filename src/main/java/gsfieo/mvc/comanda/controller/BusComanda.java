@@ -189,13 +189,13 @@ public class BusComanda {
 				+ "C.totalCompra, (SELECT S.serv_desc FROM servico S WHERE S.id_serv = C.id_serv_FK),"
 				+ "(SELECT FP.forma_pagamento FROM FORMA_PAGAMENTO FP WHERE FP.id_forma_pagamento = C.id_forma_pagamento_FK) "
 				+ " FROM comanda C WHERE C.id_login_FK = (SELECT L.id_login FROM Login L WHERE L.usuario = '"
-				+ comanda.getLogin().getUsuario() + "') AND" + " C.id_comanda LIKE '%" + comanda.getCdComanda()
+				+ comanda.getLogin().getUsuario() + "') AND" + " (C.id_comanda LIKE '%" + comanda.getCdComanda()
 				+ "%' OR" + " C.id_status_FK = (SELECT S.id_status FROM Status S WHERE S.status = '"
 				+ comanda.getStatus() + "') OR "
 				+ " C.id_serv_FK = (SELECT S.id_serv FROM servico S WHERE S.serv_desc LIKE '%"
 				+ comanda.getServico().getServico() + "%') OR"
 				+ " C.id_forma_pagamento_FK = (SELECT FP.id_forma_pagamento FROM FORMA_PAGAMENTO FP WHERE FP.forma_pagamento LIKE '%"
-				+ comanda.getFormaPgto().getFormaPagto() + "%')";
+				+ comanda.getFormaPgto().getFormaPagto() + "%'))";
 
 		return bd.retorna_N_Registros(strQuery);
 
